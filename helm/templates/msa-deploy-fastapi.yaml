@@ -12,10 +12,6 @@ spec:
       labels:
         app: msa-register-service
     spec:
-      initContainers:
-        - name: init-mariadb-check
-          image: mariadb:10.11.9-jammy
-          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: msa-register-service
           image: docdker/msa-register-service  # 이미지 이름 수정
@@ -58,10 +54,6 @@ spec:
       labels:
         app: msa-payment-service
     spec:
-      initContainers:
-        - name: init-mariadb-check
-          image: mariadb:10.11.9-jammy
-          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: msa-payment-service
           image: docdker/msa-payment-service  # 이미지 이름 수정
@@ -104,10 +96,6 @@ spec:
       labels:
         app: msa-parking-service
     spec:
-      initContainers:
-        - name: init-mariadb-check
-          image: mariadb:10.11.9-jammy
-          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: msa-parking-service
           image: docdker/msa-parking-service  # 이미지 이름 수정
@@ -150,10 +138,6 @@ spec:
       labels:
         app: msa-statistics-service
     spec:
-      initContainers:
-        - name: init-mariadb-check
-          image: mariadb:10.11.9-jammy
-          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: msa-statistics-service
           image: docdker/msa-statistics-service  # 이미지 이름 수정
