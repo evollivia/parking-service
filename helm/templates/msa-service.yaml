@@ -20,7 +20,7 @@ spec:
   ports:
     - port: 8001
       targetPort: 8001
-      nodePort: 30300  # 원하는 노드 포트 (선택 사항)
+      nodePort: 30200  # 원하는 노드 포트 (선택 사항)
   selector:
     app: msa-payment-service
 ---
@@ -33,7 +33,7 @@ spec:
   ports:
     - port: 8002
       targetPort: 8002
-      nodePort: 30400  # 원하는 노드 포트 (선택 사항)
+      nodePort: 30300  # 원하는 노드 포트 (선택 사항)
   selector:
     app: msa-parking-service
 ---
@@ -46,6 +46,6 @@ spec:
   ports:
     - port: 8003
       targetPort: 8003
-      nodePort: 30500  # 원하는 노드 포트 (선택 사항)
+      nodePort: 30400  # 원하는 노드 포트 (선택 사항)
   selector:
     app: msa-statistics-service
