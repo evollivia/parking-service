@@ -45,11 +45,7 @@ spec:
               value: "http://front-nginx-svc:30010,http://front-nodejs-svc:3000"
       nodeSelector:
         node-type: worker  # Worker 노드에서 실행하도록 설정
-      tolerations:
-        - key: "node-type"
-          operator: "Equal"
-          value: "worker"
-          effect: "NoSchedule"
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -98,11 +94,6 @@ spec:
               value: "http://front-nginx-svc:30010,http://front-nodejs-svc:3000"
       nodeSelector:
         node-type: worker  # Worker 노드에서 실행하도록 설정
-      tolerations:
-        - key: "node-type"
-          operator: "Equal"
-          value: "worker"
-          effect: "NoSchedule"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -151,11 +142,6 @@ spec:
               value: "http://front-nginx-svc:30010,http://front-nodejs-svc:3000"
       nodeSelector:
         node-type: worker  # Worker 노드에서 실행하도록 설정
-      tolerations:
-        - key: "node-type"
-          operator: "Equal"
-          value: "worker"
-          effect: "NoSchedule"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -204,8 +190,3 @@ spec:
               value: "http://front-nginx-svc:30010,http://front-nodejs-svc:3000"
       nodeSelector:
         node-type: worker  # Worker 노드에서 실행하도록 설정
-      tolerations:
-        - key: "node-type"
-          operator: "Equal"
-          value: "worker"
-          effect: "NoSchedule"

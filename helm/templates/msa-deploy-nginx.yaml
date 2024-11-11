@@ -27,11 +27,7 @@ spec:
             - containerPort: 80
       nodeSelector:
         node-type: worker  # Worker 노드에서 실행하도록 설정
-      tolerations:
-        - key: "node-type"
-          operator: "Equal"
-          value: "worker"
-          effect: "NoSchedule"
+
 ---
 # nignx
 apiVersion: v1
