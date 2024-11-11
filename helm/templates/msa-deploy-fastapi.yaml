@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: msa-register-service
+  name: msa-register-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: msa-register-service
+      app: msa-register-deploy
   template:
     metadata:
       labels:
-        app: msa-register-service
+        app: msa-register-deploy
     spec:
       initContainers:
         - name: init-mariadb-check
@@ -18,7 +18,7 @@ spec:
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: msa-register-service
-          image: docdker/msa-register-service  # 이미지 이름 수정
+          image: {{ .Values.deployment.register.image }}  # 이미지 이름 수정
           ports:
             - containerPort: 8000
           env:
@@ -47,24 +47,24 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: msa-payment-service
+  name: msa-payment-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: msa-payment-service
+      app: msa-payment-deploy
   template:
     metadata:
       labels:
-        app: msa-payment-service
+        app: msa-payment-deploy
     spec:
       initContainers:
         - name: init-mariadb-check
           image: mariadb:10.11.9-jammy
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
-        - name: msa-payment-service
-          image: docdker/msa-payment-service  # 이미지 이름 수정
+        - name: msa-payment-deploy
+          image: {{ .Values.deployment.payment.image }}  # 이미지 이름 수정
           ports:
             - containerPort: 8001
           env:
@@ -93,16 +93,16 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: msa-parking-service
+  name: msa-parking-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: msa-parking-service
+      app: msa-parking-deploy
   template:
     metadata:
       labels:
-        app: msa-parking-service
+        app: msa-parking-deploy
     spec:
       initContainers:
         - name: init-mariadb-check
@@ -110,7 +110,7 @@ spec:
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: msa-parking-service
-          image: docdker/msa-parking-service  # 이미지 이름 수정
+          image: {{ .Values.deployment.parking.image }}  # 이미지 이름 수정
           ports:
             - containerPort: 8002
           env:
@@ -139,25 +139,24 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: msa-statistics-service
+  name: msa-statistics-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: msa-statistics-service
+      app: msa-statistics-deploy
   template:
     metadata:
       labels:
-        app: msa-statistics-service
+        app: msa-statistics-deploy
     spec:
       initContainers:
         - name: init-mariadb-check
           image: mariadb:10.11.9-jammy
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
-        - name: msa-statistics-service
-          image: docdker/msa-statistics-service  # 이미지 이름 수정
-          #          image: docdker/statistics:v4
+        - name: msa-statistics-deploy
+          image: {{ .Values.deployment.statistics.image }}  # 이미지 이름 수정
           ports:
             - containerPort: 8003
           env:

@@ -18,12 +18,18 @@ spec:
     spec:
       containers:
         - name: front-nodejs
-          image: dangdang42/front-nodejs:v30
+          image: {{ .Values.deployment.nodejs.image }}
           ports:
             - containerPort: 3000
-          envFrom:
-            - secretRef:
-                name: front-secret
+          env:
+            - name: REGISTER_URL
+              value: {{ .Values.deployment.nodejs.ip }}:30100
+            - name: PAYMENT_URL
+              value: {{ .Values.deployment.nodejs.ip }}:30200
+            - name: PARKING_URL
+              value: {{ .Values.deployment.nodejs.ip }}:30300
+            - name: STATISTICS_URL
+              value: {{ .Values.deployment.nodejs.ip }}:30400
 ---
 # nodejs
 apiVersion: v1
