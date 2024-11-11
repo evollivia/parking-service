@@ -18,7 +18,7 @@ spec:
     spec:
       initContainers:
         - name: init-mariadb-check
-          image: mariadb:10.11.9-jammy
+          image: busybox
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: front-nodejs
