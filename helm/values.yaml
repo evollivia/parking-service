@@ -6,7 +6,7 @@ replicaCount: 1
 
 deployment:
   register:
-    image: docker.io/yoon741/msa-register-service:v1
+    image: docker.io/yoon741/msa-register-service
   payment:
     image: ashashrain/parking-payment-service:v4
   parking:
