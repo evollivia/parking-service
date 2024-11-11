@@ -16,6 +16,10 @@ spec:
       labels:
         app: front-nodejs
     spec:
+      initContainers:
+        - name: init-mariadb-check
+          image: mariadb:10.11.9-jammy
+          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: front-nodejs
           image: {{ .Values.deployment.nodejs.image }}
@@ -23,13 +27,20 @@ spec:
             - containerPort: 3000
           env:
             - name: REGISTER_URL
-              value: {{ .Values.deployment.nodejs.ip }}:30100
+              value: msa-register-service:30100
             - name: PAYMENT_URL
-              value: {{ .Values.deployment.nodejs.ip }}:30200
+              value: msa-payment-service:30200
             - name: PARKING_URL
-              value: {{ .Values.deployment.nodejs.ip }}:30300
+              value: msa-parking-service:30300
             - name: STATISTICS_URL
-              value: {{ .Values.deployment.nodejs.ip }}:30400
+              value: msa-statistics-service:30400
+      nodeSelector:
+        node-type: worker  # Worker 노드에서 실행하도록 설정
+      tolerations:
+        - key: "node-type"
+          operator: "Equal"
+          value: "worker"
+          effect: "NoSchedule"
 ---
 # nodejs
 apiVersion: v1
