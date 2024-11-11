@@ -16,10 +16,10 @@ spec:
       labels:
         app: front-nginx
     spec:
-      initContainers:
-        - name: init-mariadb-check
-          image: busybox
-          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
+{{/*      initContainers:*/}}
+{{/*        - name: init-mariadb-check*/}}
+{{/*          image: busybox*/}}
+{{/*          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]*/}}
       containers:
         - name: front-nginx
           image: {{ .Values.deployment.nginx.image }}

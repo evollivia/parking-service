@@ -61,10 +61,10 @@ spec:
       labels:
         app: msa-payment-deploy
     spec:
-      initContainers:
-        - name: init-mariadb-check
-          image: mariadb:10.11.9-jammy
-          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
+{{/*      initContainers:*/}}
+{{/*        - name: init-mariadb-check*/}}
+{{/*          image: mariadb:10.11.9-jammy*/}}
+{{/*          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]*/}}
       containers:
         - name: msa-payment-deploy
           image: {{ .Values.deployment.payment.image }}  # 이미지 이름 수정
@@ -109,10 +109,10 @@ spec:
       labels:
         app: msa-parking-deploy
     spec:
-      initContainers:
-        - name: init-mariadb-check
-          image: mariadb:10.11.9-jammy
-          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
+{{/*      initContainers:*/}}
+{{/*        - name: init-mariadb-check*/}}
+{{/*          image: mariadb:10.11.9-jammy*/}}
+{{/*          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]*/}}
       containers:
         - name: msa-parking-service
           image: {{ .Values.deployment.parking.image }}  # 이미지 이름 수정
@@ -157,10 +157,10 @@ spec:
       labels:
         app: msa-statistics-deploy
     spec:
-      initContainers:
-        - name: init-mariadb-check
-          image: mariadb:10.11.9-jammy
-          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
+{{/*      initContainers:*/}}
+{{/*        - name: init-mariadb-check*/}}
+{{/*          image: mariadb:10.11.9-jammy*/}}
+{{/*          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]*/}}
       containers:
         - name: msa-statistics-deploy
           image: {{ .Values.deployment.statistics.image }}  # 이미지 이름 수정
