@@ -6,15 +6,15 @@ replicaCount: 1
 
 deployment:
   register:
-    image: docdker/msa-register-service
+    image: docker.io/yoon741/msa-register-service:v1
   payment:
-    image: docdker/msa-payment-service
+    image: ashashrain/parking-payment-service:v4
   parking:
-    image: docdker/msa-parking-service
+    image: docdker/parking
   statistics:
-    image: docdker/msa-statistics-service
+    image: snicuz0588/msa-statistics-service:v5
   nodejs:
-    image: dangdang42/front-nodejs:v30
+    image: docker.io/dangdang42/front-nodejs:v32
     ip: 3.37.29.106
   nginx:
-    image: dangdang42/front-nginx:v14
+    image: docker.io/dangdang42/front-nginx:v14

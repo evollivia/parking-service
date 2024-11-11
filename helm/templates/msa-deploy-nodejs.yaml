@@ -40,7 +40,6 @@ spec:
   selector:
     app: front-nodejs
   ports:
-
     - port: 3000
       protocol: TCP
       targetPort: 3000
