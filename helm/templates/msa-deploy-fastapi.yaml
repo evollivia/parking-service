@@ -42,7 +42,7 @@ spec:
             - name: MYSQL_PORT
               value: "3306"
             - name: CORS_ORIGINS
-              value: "http://192.168.56.1:30010,http://front-nodejs-svc:3000"
+              value: "http://{{ .Values.deployment.nodejs.ip }}:30010,http://front-nodejs-svc:3000"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -88,7 +88,7 @@ spec:
             - name: MYSQL_PORT
               value: "3306"
             - name: CORS_ORIGINS
-              value: "http://192.168.56.1:30010,http://front-nodejs-svc:3000"
+              value: "http://{{ .Values.deployment.nodejs.ip }}:30010,http://front-nodejs-svc:3000"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -134,7 +134,7 @@ spec:
             - name: MYSQL_PORT
               value: "3306"
             - name: CORS_ORIGINS
-              value: "http://192.168.56.1:30010,http://front-nodejs-svc:3000"
+              value: "http://{{ .Values.deployment.nodejs.ip }}:30010,http://front-nodejs-svc:3000"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -180,4 +180,4 @@ spec:
             - name: MYSQL_PORT
               value: "3306"
             - name: CORS_ORIGINS
-              value: "http://192.168.56.1:30010,http://front-nodejs-svc:3000"
+              value: "http://{{ .Values.deployment.nodejs.ip }}:30010,http://front-nodejs-svc:3000"
