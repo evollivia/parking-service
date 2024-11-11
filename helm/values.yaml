@@ -1,0 +1,20 @@
+# Default values for nginx.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+deployment:
+  register:
+    image: docdker/msa-register-service
+  payment:
+    image: docdker/msa-payment-service
+  parking:
+    image: docdker/msa-parking-service
+  statistics:
+    image: docdker/msa-statistics-service
+  nodejs:
+    image: dangdang42/front-nodejs:v30
+    ip: 3.37.29.106
+  nginx:
+    image: dangdang42/front-nginx:v14
