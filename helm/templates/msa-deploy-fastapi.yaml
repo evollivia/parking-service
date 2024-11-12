@@ -43,9 +43,6 @@ spec:
               value: "3306"
             - name: CORS_ORIGINS
               value: "http://{{ .Values.deployment.nodejs.ip }}:30010,http://front-nodejs-svc:3000"
-      nodeSelector:
-        node-type: worker  # Worker 노드에서 실행하도록 설정
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -92,8 +89,6 @@ spec:
               value: "3306"
             - name: CORS_ORIGINS
               value: "http://{{ .Values.deployment.nodejs.ip }}:30010,http://front-nodejs-svc:3000"
-      nodeSelector:
-        node-type: worker  # Worker 노드에서 실행하도록 설정
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -140,8 +135,6 @@ spec:
               value: "3306"
             - name: CORS_ORIGINS
               value: "http://{{ .Values.deployment.nodejs.ip }}:30010,http://front-nodejs-svc:3000"
-      nodeSelector:
-        node-type: worker  # Worker 노드에서 실행하도록 설정
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -188,5 +181,3 @@ spec:
               value: "3306"
             - name: CORS_ORIGINS
               value: "http://{{ .Values.deployment.nodejs.ip }}:30010,http://front-nodejs-svc:3000"
-      nodeSelector:
-        node-type: worker  # Worker 노드에서 실행하도록 설정
