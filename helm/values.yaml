@@ -15,6 +15,6 @@ deployment:
     image: snicuz0588/msa-statistics-service:v5
   nodejs:
     image: docker.io/dangdang42/front-nodejs:v32
-    ip: 3.37.31.226
+    ip: 13.125.212.122
   nginx:
     image: docker.io/dangdang42/front-nginx:v14

@@ -23,13 +23,13 @@ spec:
             - containerPort: 3000
           env:
             - name: REGISTER_URL
-              value: msa-register-service:30100
+              value: {{ .Values.deployment.nodejs.ip }}:30100
             - name: PAYMENT_URL
-              value: msa-payment-service:30200
+              value: {{ .Values.deployment.nodejs.ip }}:30200
             - name: PARKING_URL
-              value: msa-parking-service:30300
+              value: {{ .Values.deployment.nodejs.ip }}:30300
             - name: STATISTICS_URL
-              value: msa-statistics-service:30400
+              value: {{ .Values.deployment.nodejs.ip }}:30400
 ---
 # nodejs
 apiVersion: v1

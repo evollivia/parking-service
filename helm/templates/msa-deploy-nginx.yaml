@@ -16,11 +16,17 @@ spec:
       labels:
         app: front-nginx
     spec:
+      initContainers:
+        - name: init-mariadb-check
+          image: busybox
+          command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
         - name: front-nginx
           image: {{ .Values.deployment.nginx.image }}
           ports:
             - containerPort: 80
+      nodeSelector:
+        node-type: worker  # Worker 노드에서 실행하도록 설정
 
 ---
 # nignx
