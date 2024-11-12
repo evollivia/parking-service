@@ -15,6 +15,5 @@ deployment:
     image: dangdang42/statistics:v2
   nodejs:
     image: dangdang42/front-nodejs:v40
-    ip: 43.200.71.227
   nginx:
     image: dangdang42/front-nginx:v17
