@@ -6,18 +6,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: msa-register-deploy
+      app: msa-register
   template:
     metadata:
       labels:
-        app: msa-register-deploy
+        app: msa-register
     spec:
       initContainers:
         - name: init-mariadb-check
           image: mariadb:10.11.9-jammy
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
-        - name: msa-register-service
+        - name: msa-register
           image: {{ .Values.deployment.register.image }}  # 이미지 이름 수정
           ports:
             - containerPort: 8000
@@ -52,18 +52,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: msa-payment-deploy
+      app: msa-payment
   template:
     metadata:
       labels:
-        app: msa-payment-deploy
+        app: msa-payment
     spec:
       initContainers:
         - name: init-mariadb-check
           image: mariadb:10.11.9-jammy
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
-        - name: msa-payment-deploy
+        - name: msa-payment
           image: {{ .Values.deployment.payment.image }}  # 이미지 이름 수정
           ports:
             - containerPort: 8001
@@ -98,18 +98,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: msa-parking-deploy
+      app: msa-parking
   template:
     metadata:
       labels:
-        app: msa-parking-deploy
+        app: msa-parking
     spec:
       initContainers:
         - name: init-mariadb-check
           image: mariadb:10.11.9-jammy
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
-        - name: msa-parking-service
+        - name: msa-parking
           image: {{ .Values.deployment.parking.image }}  # 이미지 이름 수정
           ports:
             - containerPort: 8002
@@ -144,18 +144,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: msa-statistics-deploy
+      app: msa-statistics
   template:
     metadata:
       labels:
-        app: msa-statistics-deploy
+        app: msa-statistics
     spec:
       initContainers:
         - name: init-mariadb-check
           image: mariadb:10.11.9-jammy
           command: [ 'sh', '-c', 'until mysqladmin ping -h mariadb --silent; do echo "Waiting for MariaDB..."; sleep 2; done' ]
       containers:
-        - name: msa-statistics-deploy
+        - name: msa-statistics
           image: {{ .Values.deployment.statistics.image }}  # 이미지 이름 수정
           ports:
             - containerPort: 8003
